@@ -1,0 +1,177 @@
+%% 
+%% Copyright 2007, 2008, 2009 Elsevier Ltd
+%% 
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%% 
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%% 
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%% 
+%% Template article for Elsevier's document class `elsarticle'
+%% with harvard style bibliographic references
+%% SP 2008/03/01
+
+%\documentclass[preprint,12pt,authoryear]{elsarticle}  %default in the template
+%\documentclass[preprint,10pt,authoryear]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times,authoryear]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn,authoryear]{elsarticle}
+ \documentclass[final,3p,times,authoryear]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,authoryear]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn,authoryear]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{color, colortbl}
+\usepackage{amsmath}
+\usepackage{siunitx}
+%\usepackage{todonotes}
+\usepackage{tabularx}
+\usepackage[]{algorithm2e}
+\usepackage{soul}
+%\usepackage[colorinlistoftodos]{todonotes}
+
+\usepackage{glossaries}
+
+\usepackage{xargs}
+\usepackage[pdftex,dvipsnames]{xcolor}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+\definecolor{light-gray}{gray}{0.9}
+
+\usepackage{framed} % Framing content
+\usepackage{multicol} % Multiple columns environment
+
+
+\DeclareRobustCommand{\hlgreen}[1]{{\sethlcolor{green}\hl{#1}}}
+
+\journal{TBD}
+
+
+\begin{document}
+
+
+\title{Modelling IWM scenarios }
+
+\author[melb]{Kerry~A.~Nice\corref{cor1}}
+\ead{kerry.nice@unimelb.edu.au}
+\author[melb]{et al.}
+%\author[melb]{Sachith Seneviratne}
+%\author[melb]{Jasper S. Wijnands}
+%\author[melb]{Jason Thompson}
+%\author[melb,eng]{Mark Stevenson}
+\cortext[cor1]{Principal corresponding author}
+\address[melb]{Transport, Health, and Urban Design Hub, Faculty of Architecture, Building, and Planning, University of Melbourne, Australia.}
+%\address[eng]{Melbourne School of Engineering; and Melbourne School of Population and Global Health, University of Melbourne, Australia.}
+
+
+
+
+
+
+
+\begin{abstract}
+
+TODO
+
+\end{abstract}
+
+\begin{keyword}
+micro-climate\sep 
+urban morphology\sep
+urban heat
+\end{keyword}
+
+
+
+\maketitle
+
+
+
+
+
+\section{Introduction}
+
+\section{Methods}\label{sec:methods}
+
+\subsection{Scenario creation}\label{sec:methods_scen}
+
+For this project, the TARGET \citep{Broadbent2019} model was used. Modelling requires two main configuration elements, forcing data and gridded land cover. 
+
+For forcing data, the starting set of data was created for the time period 1 January 2006-31 December 2019 from ERA5 reanalysis for each city. The parameters used were air temperature, relative humidity, wind speed, air pressure, incoming shortwave, incoming longwave, and total precipitation. Note, precipitation is not used in TARGET, so this parameter was not used. Two future periods, centred on 2030 and 2050 were generated using CMIP6 scenarios of SSP 1.2-6, 3.7-0, and 5.8-5 and six new forcing files were created by replacing the ERA5 air temperatures with `morphed' air temperatures from these future scenarios. Each of these seven forcing datasets were specific for each of the nine cities modelled (Adelaide, Albury, Brisbane, Canberra, Darwin, Melbourne, Perth, Sydney, and Townsville).
+
+The gridded land cover data was created with the surface fraction breakdowns of building roofs, roads, water, concrete, vegetation (trees), dry grass/bare soil, and irrigated grass as well as average domain heights and width. 33 grids represented LCZ1, 2, 3, 4, 5, 6, 8, 9, 10, B, and D and their business as usual (BAU), moderate IWM (MOD), and high IWM (HIGH) variations. Each of the model runs used the same land cover configuration as the final results will be aggregated for each city using a weighted average of their individual mixes of LCZs.
+
+
+%The overall workflow for this project is presented in Figure \ref{fig:process}. Each step is detailed in the following sections.
+
+
+
+
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[page=2,trim={46 280 100 10},clip,scale=0.45]{Figures/Processes.pdf}
+%\caption{\bf Workflow flow for this project.}
+% \label{fig:process}
+%\end{figure} 
+
+
+\subsection{Weighted averages based on climate zone mixes for each city}\label{sec:methods_lczs}
+
+Results will be aggregated by Statistical Areas Level 4 (SA4). SA4 geographical areas are defined by the Australian Bureau of Statistics (ABS) and are the largest sub-State regions defined. For example, greater Melbourne contains 14 SA4 regions while Darwin contains only 1. SA4 shapefiles were downloaded from the ABS \citep{ABS2021}. 
+
+LCZ maps of each city (see section ?) were used in QGIS \citep{QGIS2009} to create zonal histograms of LCZs for each SA4 for each of the 9 cities. These percentages of LCZs in each SA4 were used to generate weighted averages for each hour in the TARGET output for each of the 7 scenarios for each city (ERA5, 2030, and 2050). As not all LCZ types were modelled, some city defined LCZs were combined when mapped to the modelled results. This includes LCZ6 (combining LCZ6 and 7), LCZB (combining LCZA and B), and LCZD (combining LCZC, D, E, F, and G).
+
+These final timeseries were provided to the health data team to generate a baseline (based on the present day ERA5 conditions) and to predict future health impacts based on 2030 and 2050 conditions and SSP scenario. 
+
+
+
+
+
+
+
+\section{Results}\label{sec:results}
+
+\subsection{Results1}\label{sec:results1}
+
+
+
+\section{Conclusion}\label{sec:conclusion}
+
+
+\section*{References}\label{sec:ref}
+\bibliographystyle{elsarticle-harv} 
+\bibliography{Bib}
+
+\clearpage
+%\input{MCZArticle_figures_V2.tex}
+
+
+%\section{Supplementary Figures}\label{sec:suppfig}
+
+\end{document}
